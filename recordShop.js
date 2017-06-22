@@ -117,8 +117,23 @@ var sellDisk = function sellDisk(diskID)
 	return mydisk;
 }
 	
+var SearchSimilar = function SearchSimilar(genere)
+{
+	var disks = getDisks();
+	var similar = [];
+	var mydisk = searchDisk(0);
+	for (i=0; i < disks.lenght; i++){
+		if (disks[i].genre == genere) {
+			mydisk = searchDisk(i);
+			similar.push(mydisk);
+		}
+	}
+	return similar;
+}
 
 //export functions
 exports.getDisks = getDisks; 
 exports.searchDisk = searchDisk; 
 exports.remaster = remaster; 
+exports.sellDisk = sellDisk;
+exports.SearchSimilar = SearchSimilar;
