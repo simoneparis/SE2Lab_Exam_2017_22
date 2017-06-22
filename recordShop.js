@@ -106,6 +106,18 @@ var remaster = function remaster(item)
         return null;
 }
 
+var sellDisk = function sellDisk(diskID)
+{
+	disks[diskID].quantity = disks[diskID].quantity - 1;
+	var mydisk = searchDisk(diskID);
+	var x = new Date();
+	var y = mydisk.date;
+	var days = (x-y)/(24*3600*1000);
+	mydisk.price = mydisk.price - (mydisk.price*days/1000);
+	return mydisk;
+}
+	
+
 //export functions
 exports.getDisks = getDisks; 
 exports.searchDisk = searchDisk; 
